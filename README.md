@@ -3,6 +3,8 @@ The goal of this is to document and then automate setting up a proper WordPress 
 
 Right now its a set of instructions, not totally complete to get vitualbox, vagrant, all the VCS/ dependency managment as well as 2 or 3 actual development environments running. Also phpStorm and Atom.
 
+Pull requests <em>super</em> welcome.
+
 
 ## Goals
 * Complete install instructions
