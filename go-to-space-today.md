@@ -90,9 +90,13 @@ vagrant up
 
 ## VVV
 git clone https://github.com/Varying-Vagrant-Vagrants/VVV vvv
+
 cd vvv
+
 vagrant up
+
 git clone https://github.com/bradp/vv.git
+
 sudo cp vv /usr/local/bin
 
 
