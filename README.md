@@ -9,3 +9,4 @@ Pull requests <em>super</em> welcome.
 ## Goals
 * Complete install instructions
 * Automate with Ansible or something
+  * Like this: https://github.com/theodorosploumis/ubuntu-provision
