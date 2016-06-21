@@ -43,11 +43,79 @@ vagrant plugin install vagrant-ghost
 
 vagrant plugin install vagrant-triggers
 
+## MariaDB
+[MariaDB](https://mariadb.org/) is an open-source, enhanced, drop-in replacement for MySQL.
+
+Use the online [respository configuration tool](https://downloads.mariadb.org/mariadb/repositories) to generate installation instructions.
+
+Sample install commands, based on Ubuntu Xenial, stable release, Irish mirror:
+
+~~~
+# Set up repo
+sudo apt-get install software-properties-common
+sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.heanet.ie/mirrors/mariadb/repo/10.1/ubuntu xenial main'
+
+# Once the key is imported, install MariaDB:
+sudo apt-get update
+sudo apt-get install mariadb-server
+~~~
+
+Note that the URL for your repo is likely to differ depending upon your location.
+
+You'll be prompted for a root password during the installation process.
+
+After installation, secure MariaDB by removing anonymous users, removing the test database and disallowing external access. To achieve this, run:
+
+~~~
+sudo mysql_secure_installation
+~~~
+
+…and answer the questions accordingly.
+
+## phpMyAdmin
+[phpMyAdmin](https://www.phpmyadmin.net/) is a PHP tool that provides a web-based GUI for MySQL admin.
+
+Install phpMyAdmin:
+
+~~~
+sudo apt-get install phpmyadmin apache2-utils
+~~~
+
+An [ncurses](https://en.wikipedia.org/wiki/Ncurses) window will open that enables phpMyAdmin to be configured.
+
+* To select a server, hit space then tab/return
+* Choose “yes” when asked “Configure database for phpmyadmin with dbconfig-common?”
+* Enter a password for phpMyAdmin when prompted
+
+Restart Apache:
+
+~~~
+sudo service apache2 restart
+~~~
+
+Access phpMyAdmin at [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+
+Use the username 'root' and the password that you set during installation.
+
+When installing phpMyAdmin on Xenial Xerus, you may encounter a white screen of death. Try checking the Apache error log to determine the problem:
+
+~~~
+tail -f /var/log/apache2/error.log
+~~~
+
+One reason for failure is a missing PHP extension. For example, phpMyAdmin requires the php-gettext extension. If necessary, install this and restart Apache:
+
+~~~
+sudo apt-get install php-gettext
+sudo service apache2 restart
+~~~
+
 # SQL Manager
 
 ??
 
-#php7 
+#php7
 
 sudo apt-get install php7.0 php7.0-fpm php7.0-mysql -y
 
